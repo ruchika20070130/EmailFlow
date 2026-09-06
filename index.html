@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///C:/Users/chand/Downloads/Ruchika%20digital%20marketing.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Marketing Automation System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 245px;
+    background: #111827;
+    color: white;
+    padding: 22px 16px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 8px;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.nav button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: #cbd5e1;
+    padding: 13px 14px;
+    border-radius: 9px;
+    margin: 5px 0;
+}
+
+.nav button:hover,
+.nav button.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* Main */
+.main {
+    margin-left: 245px;
+    width: calc(100% - 245px);
+    padding: 28px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    font-size: 28px;
+}
+
+.user {
+    background: white;
+    padding: 9px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px #0000000d;
+}
+
+/* Pages */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px #0000000a;
+}
+
+.card small {
+    color: #6b7280;
+}
+
+.card h2 {
+    margin-top: 9px;
+    font-size: 28px;
+}
+
+/* Panels */
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 3px 15px #0000000a;
+    margin-bottom: 20px;
+}
+
+.panel h3 {
+    margin-bottom: 16px;
+}
+
+/* Progress bars */
+.bar {
+    height: 13px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 8px 0 15px;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: #2563eb;
+    border-radius: 20px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* Badge */
+.badge {
+    padding: 5px 9px;
+    border-radius: 15px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+}
+
+/* Forms */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2563eb;
+}
+
+
+/* CSV Import */
+.file-input {
+    padding: 10px;
+    background: #f9fafb;
+}
+.import-help {
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* Email Templates */
+.template-preview {
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+}
+
+.btn.secondary {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn.danger {
+    background: #dc2626;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Notice */
+.notice {
+    padding: 12px;
+    background: #eff6ff;
+    color: #1e40af;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Reports */
+.report-box {
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 25px;
+}
+
+/* Chart */
+.chart {
+    height: 250px;
+    display: flex;
+    align-items: end;
+    gap: 16px;
+    padding: 15px 5px 0;
+}
+
+.chart .col {
+    flex: 1;
+    text-align: center;
+}
+
+.chart .barcol {
+    height: 190px;
+    display: flex;
+    align-items: end;
+}
+
+.chart .barcol div {
+    width: 100%;
+    background: #2563eb;
+    border-radius: 6px 6px 0 0;
+}
+
+.chart small {
+    display: block;
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+/* Mobile */
+@media(max-width: 900px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 650px) {
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 16px;
+    }
+
+    .nav {
+        display: flex;
+        overflow: auto;
+    }
+
+    .nav button {
+        min-width: max-content;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+}
+
+@media print {
+    .sidebar, .topbar, .actions, button, input, select, textarea {
+        display: none !important;
+    }
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+    .page {
+        display: block !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <div class="logo">
+        Email<span>Flow</span>
+    </div>
+
+    <div class="nav">
+
+        <button class="active" data-page="dashboard">
+            📊 Dashboard
+        </button>
+
+        <button data-page="subscribers">
+            👥 Subscribers
+        </button>
+
+        <button data-page="campaigns">
+            ✉️ Campaigns
+        </button>
+
+        <button data-page="automation">
+            🤖 Automation
+        </button>
+
+        <button data-page="analytics">
+            📈 Analytics
+        </button>
+
+        <button data-page="reports">
+            📄 Reports
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<div class="topbar">
+
+    <h1 id="pageTitle">
+        Dashboard
+    </h1>
+
+    <div class="user">
+        Admin
+    </div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page active">
+
+<div class="cards">
+
+    <div class="card">
+        <small>Total Subscribers</small>
+        <h2 id="dashSubscribers">2</h2>
+    </div>
+
+    <div class="card">
+        <small>Total Campaigns</small>
+        <h2 id="dashCampaigns">0</h2>
+    </div>
+
+    <div class="card">
+        <small>Open Rate</small>
+        <h2>68%</h2>
+    </div>
+
+    <div class="card">
+        <small>Click Rate</small>
+        <h2>24%</h2>
+    </div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="panel">
+
+    <h3>
+        Campaign Performance
+    </h3>
+
+    <p>Open Rate</p>
+
+    <div class="bar">
+        <span style="width:68%"></span>
+    </div>
+
+
+    <p>Click Rate</p>
+
+    <div class="bar">
+        <span style="width:24%"></span>
+    </div>
+
+
+    <p>Engagement</p>
+
+    <div class="bar">
+        <span style="width:52%"></span>
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <h3>
+        Quick Actions
+    </h3>
+
+    <div class="actions">
+
+        <button class="btn" onclick="showPage(&#39;subscribers&#39;)">
+            Add Subscriber
+        </button>
+
+        <button class="btn" onclick="showPage(&#39;campaigns&#39;)">
+            Create Campaign
+        </button>
+
+        <button class="btn" onclick="showPage(&#39;reports&#39;)">
+            View Reports
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SUBSCRIBERS -->
+<section id="subscribers" class="page">
+
+<div class="panel">
+
+<h3>
+    Add Subscriber
+</h3>
+
+<form id="subscriberForm" class="form-grid">
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input id="subName" required="" placeholder="Customer name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input id="subEmail" type="email" required="" placeholder="customer@email.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Group</label>
+
+<select id="subGroup">
+
+<option>Customers</option>
+<option>New Users</option>
+<option>Students</option>
+<option>VIP</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group" style="display:flex;align-items:end">
+
+<button class="btn" type="submit">
+
+Add Subscriber
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+    Import Contact List
+</h3>
+
+<div class="form-group">
+    <label>Import Subscribers (CSV)</label>
+    <input id="csvFile" class="file-input" type="file" accept=".csv,text/csv">
+    <div class="import-help">CSV format: Name, Email, Group</div>
+</div>
+
+<div class="actions">
+    <button class="btn" type="button" onclick="importCSV()">Import CSV</button>
+    <button class="btn secondary" type="button" onclick="downloadCSVTemplate()">Download CSV Template</button>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>
+    Subscriber List
+</h3>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Group</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="subscriberTable">
+
+<tr>
+
+<td>
+kiran
+</td>
+
+<td>
+kiran@gmail.com
+</td>
+
+<td>
+
+<span class="badge">
+VIP
+</span>
+
+</td>
+
+<td>
+
+<button class="btn danger" onclick="deleteSubscriber(1788699710338)">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+ruchika chandak
+</td>
+
+<td>
+ruchika@gmail.com
+</td>
+
+<td>
+
+<span class="badge">
+Students
+</span>
+
+</td>
+
+<td>
+
+<button class="btn danger" onclick="deleteSubscriber(1788699759451)">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div id="subscriberEmpty" class="empty" style="display: none;">
+
+No subscribers yet.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CAMPAIGNS -->
+<section id="campaigns" class="page">
+
+<div class="panel">
+
+<h3>
+    Create Email Campaign
+</h3>
+
+<form id="campaignForm" class="form-grid">
+
+<div class="form-group full">
+<label>Email Template</label>
+<select id="campTemplate">
+    <option value="custom">Custom Email</option>
+    <option value="welcome">Welcome Email</option>
+    <option value="promotion">Promotional Email</option>
+    <option value="reminder">Reminder Email</option>
+</select>
+<div class="template-preview" id="templatePreview">
+    Choose a template to automatically fill the email subject and content.
+</div>
+</div>
+
+<div class="form-group">
+
+<label>Campaign Name</label>
+
+<input id="campName" required="" placeholder="Summer Promotion">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Target Group</label>
+
+<select id="campGroup">
+
+<option>All Subscribers</option>
+<option>Customers</option>
+<option>New Users</option>
+<option>Students</option>
+<option>VIP</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Email Subject</label>
+
+<input id="campSubject" required="" placeholder="Special offer just for you!">
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Email Content</label>
+
+<textarea id="campContent" required="" placeholder="Write your email content here..."></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Schedule Date &amp; Time
+</label>
+
+<input id="campDate" type="datetime-local">
+
+</div>
+
+
+<div class="form-group" style="display:flex;align-items:end">
+
+<button class="btn" type="submit">
+
+Create Campaign
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+    Campaigns
+</h3>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Subject</th>
+<th>Schedule</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="campaignTable"></tbody>
+
+</table>
+
+<div id="campaignEmpty" class="empty" style="display: block;">
+
+No campaigns created yet.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AUTOMATION -->
+<section id="automation" class="page">
+
+<div class="panel">
+
+<h3>
+    Automation Workflow
+</h3>
+
+<div class="notice">
+    Workflow: New Subscriber → Welcome Email → Promotional Email → Reminder Email → Analytics
+</div>
+
+<div class="report-box">
+    <strong>1. Subscriber Joins</strong>
+    <p>New subscriber is added to the contact list.</p>
+</div>
+
+<div class="report-box">
+    <strong>2. Welcome Email</strong>
+    <p>Automatically send a welcome email to the new subscriber.</p>
+</div>
+
+<div class="report-box">
+    <strong>3. Promotional Email</strong>
+    <p>Send a promotional campaign to the selected subscriber group.</p>
+</div>
+
+<div class="report-box">
+    <strong>4. Reminder Email</strong>
+    <p>Send a follow-up reminder according to the campaign workflow.</p>
+</div>
+
+<div class="report-box">
+    <strong>5. Analytics</strong>
+    <p>Track opens, clicks, subscriber growth, and engagement.</p>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>
+    Email Automation
+</h3>
+
+<div class="notice">
+
+Automation demo: enable a workflow and it will
+appear as active. For real email delivery, connect
+SMTP, Mailtrap, or SendGrid through a backend email service.
+
+</div>
+
+<div class="report-box">
+    <h3>Delivery Testing</h3>
+    <p>Demo status: Ready for email-service integration.</p>
+    <div class="actions">
+        <button class="btn" type="button" onclick="testEmailDelivery()">Test Email Delivery</button>
+    </div>
+    <p id="deliveryStatus" style="margin-top:10px;color:#6b7280;"></p>
+</div>
+
+
+<div class="report-box">
+
+<h3>
+👋 Welcome Email
+</h3>
+
+<p>
+Automatically send a welcome email to new subscribers.
+</p>
+
+<br>
+
+<button class="btn" onclick="toggleAutomation(this)">
+
+Enable
+
+</button>
+
+</div>
+
+
+<div class="report-box">
+
+<h3>
+🎁 Promotional Campaign
+</h3>
+
+<p>
+Send promotional emails to a selected subscriber group.
+</p>
+
+<br>
+
+<button class="btn" onclick="toggleAutomation(this)">
+
+Enable
+
+</button>
+
+</div>
+
+
+<div class="report-box">
+
+<h3>
+🔔 Reminder Email
+</h3>
+
+<p>
+Send reminder emails according to a campaign workflow.
+</p>
+
+<br>
+
+<button class="btn" onclick="toggleAutomation(this)">
+
+Enable
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ANALYTICS -->
+<section id="analytics" class="page">
+
+<div class="cards">
+
+<div class="card">
+<small>Open Rate</small>
+<h2>68%</h2>
+</div>
+
+<div class="card">
+<small>Click Rate</small>
+<h2>24%</h2>
+</div>
+
+<div class="card">
+<small>Subscriber Growth</small>
+<h2>18%</h2>
+</div>
+
+<div class="card">
+<small>Engagement</small>
+<h2>52%</h2>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+    Campaign Metrics
+</h3>
+
+<table>
+<thead>
+<tr>
+    <th>Metric</th>
+    <th>Value</th>
+    <th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Emails Sent</td>
+    <td id="metricSent">0</td>
+    <td><span class="badge">Tracked</span></td>
+</tr>
+<tr>
+    <td>Emails Opened</td>
+    <td id="metricOpened">0</td>
+    <td><span class="badge">Tracked</span></td>
+</tr>
+<tr>
+    <td>Links Clicked</td>
+    <td id="metricClicked">0</td>
+    <td><span class="badge">Tracked</span></td>
+</tr>
+<tr>
+    <td>Subscriber Growth</td>
+    <td id="metricGrowth">18%</td>
+    <td><span class="badge">Growing</span></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="panel">
+
+<h3>
+Weekly Email Engagement
+</h3>
+
+<div class="chart">
+
+<div class="col">
+<div class="barcol">
+<div style="height:45%"></div>
+</div>
+<small>Mon</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:62%"></div>
+</div>
+<small>Tue</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:52%"></div>
+</div>
+<small>Wed</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:78%"></div>
+</div>
+<small>Thu</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:70%"></div>
+</div>
+<small>Fri</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:88%"></div>
+</div>
+<small>Sat</small>
+</div>
+
+
+<div class="col">
+<div class="barcol">
+<div style="height:64%"></div>
+</div>
+<small>Sun</small>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REPORTS -->
+<section id="reports" class="page">
+
+<div class="panel">
+
+<h3>
+Marketing Reports
+</h3>
+
+
+<div class="report-box">
+
+<strong>
+Campaign Summary
+</strong>
+
+<p id="reportCampaigns">0 campaigns created.</p>
+
+</div>
+
+
+<div class="report-box">
+
+<strong>
+Subscriber Analytics
+</strong>
+
+<p id="reportSubscribers">2 subscribers registered.</p>
+
+</div>
+
+
+<div class="report-box">
+
+<strong>
+Performance Report
+</strong>
+
+<p>
+Average Open Rate: 68%
+&nbsp; | &nbsp;
+Average Click Rate: 24%
+</p>
+
+</div>
+
+
+<div class="actions">
+<button class="btn" onclick="generateReport()">
+Generate / Print Report
+</button>
+
+<button class="btn secondary" onclick="downloadReportText()">
+Download Report Summary
+</button>
+</div>
+
+</div>
+
+
+<div class="panel">
+<h3>Project Workflow &amp; Technology</h3>
+<p><strong>Workflow:</strong> Subscriber Data Collection → Email Template Creation → Campaign Scheduling → Automated Email Sending → Analytics Tracking → Report Generation.</p>
+<p><strong>Frontend:</strong> HTML, CSS, JavaScript</p>
+<p><strong>Storage:</strong> Browser localStorage for this prototype</p>
+<p><strong>Email Service:</strong> SMTP / Mailtrap / SendGrid integration required for real email delivery</p>
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* DATA */
+
+let subscribers =
+JSON.parse(
+localStorage.getItem("subscribers") || "[]"
+);
+
+let campaigns =
+JSON.parse(
+localStorage.getItem("campaigns") || "[]"
+);
+
+
+/* PAGE TITLES */
+
+const titles = {
+
+dashboard: "Dashboard",
+
+subscribers: "Subscribers",
+
+campaigns: "Campaigns",
+
+automation: "Automation",
+
+analytics: "Analytics",
+
+reports: "Reports"
+
+};
+
+
+/* SAVE DATA */
+
+function save() {
+
+localStorage.setItem(
+"subscribers",
+JSON.stringify(subscribers)
+);
+
+localStorage.setItem(
+"campaigns",
+JSON.stringify(campaigns)
+);
+
+}
+
+
+/* PAGE NAVIGATION */
+
+function showPage(page) {
+
+document
+.querySelectorAll(".page")
+.forEach(
+p => p.classList.remove("active")
+);
+
+document
+.getElementById(page)
+.classList.add("active");
+
+
+document
+.querySelectorAll(".nav button")
+.forEach(
+b =>
+b.classList.toggle(
+"active",
+b.dataset.page === page
+)
+);
+
+
+document
+.getElementById("pageTitle")
+.textContent = titles[page];
+
+updateUI();
+
+}
+
+
+/* SIDEBAR BUTTONS */
+
+document
+.querySelectorAll(".nav button")
+.forEach(btn => {
+
+btn.addEventListener(
+"click",
+() => showPage(btn.dataset.page)
+);
+
+});
+
+
+/* ADD SUBSCRIBER */
+
+document
+.getElementById("subscriberForm")
+.addEventListener(
+"submit",
+function(e) {
+
+e.preventDefault();
+
+
+subscribers.push({
+
+id: Date.now(),
+
+name:
+document
+.getElementById("subName")
+.value
+.trim(),
+
+email:
+document
+.getElementById("subEmail")
+.value
+.trim(),
+
+group:
+document
+.getElementById("subGroup")
+.value
+
+});
+
+
+save();
+
+this.reset();
+document.getElementById("templatePreview").textContent =
+    "Choose a template to automatically fill the email subject and content.";
+
+updateUI();
+
+alert(
+"Subscriber added successfully!"
+);
+
+});
+
+
+/* DELETE SUBSCRIBER */
+
+function deleteSubscriber(id) {
+
+subscribers =
+subscribers.filter(
+s => s.id !== id
+);
+
+save();
+
+updateUI();
+
+}
+
+
+/* EMAIL TEMPLATES */
+const emailTemplates = {
+    welcome: {
+        subject: "Welcome to Our Community!",
+        content: `Hi {{name}},
+
+Welcome! We're excited to have you with us.
+
+Thank you for joining our community. We look forward to sharing useful updates, offers, and information with you.
+
+Best regards,
+The EmailFlow Team`
+    },
+    promotion: {
+        subject: "Exclusive Offer Just for You!",
+        content: `Hi {{name}},
+
+We have something special for you!
+
+Enjoy our latest promotional offer and don't miss out on this limited-time opportunity.
+
+Click below to learn more and take advantage of the offer.
+
+Best regards,
+The EmailFlow Team`
+    },
+    reminder: {
+        subject: "A Quick Reminder for You",
+        content: `Hi {{name}},
+
+This is a friendly reminder about our latest update.
+
+If you haven't taken action yet, now is a great time to check it out.
+
+Thank you,
+The EmailFlow Team`
+    }
+};
+
+function loadEmailTemplate(templateKey) {
+    const subject = document.getElementById("campSubject");
+    const content = document.getElementById("campContent");
+    const preview = document.getElementById("templatePreview");
+
+    if (templateKey === "custom") {
+        subject.value = "";
+        content.value = "";
+        preview.textContent = "Custom Email selected. Write your own subject and content.";
+        return;
+    }
+
+    const template = emailTemplates[templateKey];
+    if (!template) return;
+
+    subject.value = template.subject;
+    content.value = template.content;
+    preview.textContent = "Template loaded successfully. You can edit the subject and content before creating the campaign.";
+}
+
+document.getElementById("campTemplate").addEventListener("change", function() {
+    loadEmailTemplate(this.value);
+});
+
+/* CREATE CAMPAIGN */
+
+document
+.getElementById("campaignForm")
+.addEventListener(
+"submit",
+function(e) {
+
+e.preventDefault();
+
+
+campaigns.push({
+
+id: Date.now(),
+
+name:
+document
+.getElementById("campName")
+.value
+.trim(),
+
+subject:
+document
+.getElementById("campSubject")
+.value
+.trim(),
+
+group:
+document
+.getElementById("campGroup")
+.value,
+
+template:
+document
+.getElementById("campTemplate")
+.value,
+
+content:
+document
+.getElementById("campContent")
+.value
+.trim(),
+
+date:
+document
+.getElementById("campDate")
+.value,
+
+status: "Scheduled"
+
+});
+
+
+save();
+
+this.reset();
+
+updateUI();
+
+alert(
+"Campaign created successfully!"
+);
+
+});
+
+
+/* DELETE CAMPAIGN */
+
+function deleteCampaign(id) {
+
+campaigns =
+campaigns.filter(
+c => c.id !== id
+);
+
+save();
+
+updateUI();
+
+}
+
+
+/* AUTOMATION */
+
+function toggleAutomation(btn) {
+
+if (btn.textContent === "Enable") {
+
+btn.textContent = "Enabled ✓";
+
+btn.style.background = "#16a34a";
+
+}
+
+else {
+
+btn.textContent = "Enable";
+
+btn.style.background = "";
+
+}
+
+}
+
+
+/* UPDATE UI */
+
+function updateUI() {
+
+/* Dashboard */
+
+document
+.getElementById("dashSubscribers")
+.textContent =
+subscribers.length;
+
+document
+.getElementById("dashCampaigns")
+.textContent =
+campaigns.length;
+
+
+/* Reports */
+
+document
+.getElementById("reportSubscribers")
+.textContent =
+subscribers.length +
+" subscribers registered.";
+
+document
+.getElementById("reportCampaigns")
+.textContent =
+campaigns.length +
+" campaigns created.";
+
+
+/* Subscriber Table */
+
+const st =
+document.getElementById(
+"subscriberTable"
+);
+
+st.innerHTML = "";
+
+
+subscribers.forEach(s => {
+
+st.innerHTML += `
+
+<tr>
+
+<td>
+${escapeHTML(s.name)}
+</td>
+
+<td>
+${escapeHTML(s.email)}
+</td>
+
+<td>
+
+<span class="badge">
+${escapeHTML(s.group)}
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn danger"
+onclick="deleteSubscriber(${s.id})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+document
+.getElementById("subscriberEmpty")
+.style.display =
+subscribers.length
+? "none"
+: "block";
+
+
+/* Campaign Table */
+
+const ct =
+document.getElementById(
+"campaignTable"
+);
+
+ct.innerHTML = "";
+
+
+campaigns.forEach(c => {
+
+const date =
+c.date
+? new Date(c.date).toLocaleString()
+: "Not scheduled";
+
+
+ct.innerHTML += `
+
+<tr>
+
+<td>
+${escapeHTML(c.name)}
+</td>
+
+<td>
+${escapeHTML(c.subject)}
+</td>
+
+<td>
+${date}
+</td>
+
+<td>
+
+<span class="badge">
+${c.status}
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn danger"
+onclick="deleteCampaign(${c.id})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+document
+.getElementById("campaignEmpty")
+.style.display =
+campaigns.length
+? "none"
+: "block";
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value) {
+
+return String(value)
+.replace(
+/[&<>"']/g,
+
+m => ({
+
+"&": "&amp;",
+
+"<": "&lt;",
+
+">": "&gt;",
+
+'"': "&quot;",
+
+"'": "&#039;"
+
+}[m])
+
+);
+
+}
+
+
+/* PRINT REPORT */
+
+function generateReport() {
+
+window.print();
+
+}
+
+
+/* CSV IMPORT */
+function importCSV() {
+    const fileInput = document.getElementById("csvFile");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select a CSV file first.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const lines = e.target.result.split(/\r?\n/).filter(line => line.trim());
+
+        if (lines.length < 2) {
+            alert("The CSV file does not contain subscriber data.");
+            return;
+        }
+
+        let imported = 0;
+
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(",").map(v => v.trim());
+
+            if (parts.length >= 2 && parts[0] && parts[1]) {
+                const email = parts[1];
+
+                if (!subscribers.some(s => s.email.toLowerCase() === email.toLowerCase())) {
+                    subscribers.push({
+                        id: Date.now() + i,
+                        name: parts[0],
+                        email: email,
+                        group: parts[2] || "Customers"
+                    });
+                    imported++;
+                }
+            }
+        }
+
+        save();
+        updateUI();
+        fileInput.value = "";
+        alert(imported + " subscriber(s) imported successfully!");
+    };
+
+    reader.readAsText(file);
+}
+
+function downloadCSVTemplate() {
+    const csv = "Name,Email,Group\nJohn Doe,john@example.com,Customers\nJane Smith,jane@example.com,VIP";
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "subscriber_template.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+/* DELIVERY TEST */
+function testEmailDelivery() {
+    const status = document.getElementById("deliveryStatus");
+    status.textContent = "Demo test completed. Connect SMTP/Mailtrap/SendGrid in the backend for actual delivery.";
+}
+
+/* REPORT DOWNLOAD */
+function downloadReportText() {
+    const report = `EmailFlow Marketing Report
+
+Subscribers: ${subscribers.length}
+Campaigns: ${campaigns.length}
+Open Rate: 68%
+Click Rate: 24%
+Subscriber Growth: 18%
+Engagement: 52%
+
+Automation Workflow:
+New Subscriber → Welcome Email → Promotional Email → Reminder Email → Analytics
+`;
+
+    const blob = new Blob([report], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "EmailFlow_Marketing_Report.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+/* ANALYTICS METRICS */
+function updateMetrics() {
+    const sent = campaigns.length * 100;
+    const opened = Math.round(sent * 0.68);
+    const clicked = Math.round(sent * 0.24);
+
+    document.getElementById("metricSent").textContent = sent;
+    document.getElementById("metricOpened").textContent = opened;
+    document.getElementById("metricClicked").textContent = clicked;
+    document.getElementById("metricGrowth").textContent = "18%";
+}
+
+/* INITIAL LOAD */
+
+updateUI();
+
+</script>
+
+
+</body></html>
